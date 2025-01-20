@@ -1,0 +1,17 @@
+{% extends "web/base.html" %}
+
+{% block title %}메뉴 - FastFood{% endblock %}
+
+{% block content %}
+<section class="menu">
+    <h2>메뉴</h2>
+    <p>우리의 인기 메뉴를 살펴보세요!</p>
+    <!-- 메뉴 항목들을 여기에 추가 -->
+    <div class="menu-item">
+        <img src="{{ url_for('static', filename='images/burger.jpg') }}" alt="버거">
+        <h3>버거</h3>
+        <p>맛있는 햄버거와 함께 즐겨보세요!</p>
+        <span>₩5,000</span>
+    </div>
+</section>
+{% endblock %}

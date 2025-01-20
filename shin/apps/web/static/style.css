@@ -1,0 +1,227 @@
+@font-face {
+    font-family: 'HangamePoker-Regular';
+    src: url('font/HangamePoker-Regular.ttf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* 기본 스타일 */
+body {
+    font-family: "HangamePoker-Regular";
+    margin: 0;
+    padding: 0;
+    background-color: #fff0bf;
+
+}
+
+header {
+    background-color: #fff;
+    padding: 10px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar {
+    background-color: rgb(255, 152, 0) !important;  /* or background-color: #ff9800 !important; */
+    padding: 0.7rem 1.2rem;
+}
+
+/* 로고 */
+.logo {
+    height: 80px;
+    width: auto;
+    margin-right: 20px;
+    margin-left: 80px;  /* 왼쪽 여백을 추가하여 로고를 오른쪽으로 이동 */
+
+}
+
+/* 메뉴 항목 스타일 */
+.navbar-nav .nav-item .nav-link {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffffff;
+    text-transform: uppercase;
+    padding: 0.7rem 1.2rem;
+}
+
+.navbar-nav .nav-item .nav-link:hover {
+    color: #000000;
+    background-color: #ffffff;
+    border-radius: 5px;
+}
+
+.navbar-nav .nav-item .nav-link.active {
+    color: #d9534f;
+    font-weight: bold;
+}
+
+.nav-item.dropdown .dropdown-menu {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.nav-item.dropdown .dropdown-menu .dropdown-item:hover {
+    background-color: #f1f1f1;
+}
+
+/* 검색 폼 */
+.form-control {
+    width: 300px;  /* 기본 화면에서 너비를 400px로 설정 */
+    border-radius: 20px;
+    font-size: 1.5rem;
+}
+
+.btn-outline-success {
+    border-radius: 20px;
+    font-size: 1.5rem;
+}
+
+
+/* 브레드크럼 스타일 */
+.breadcrumb-nav {
+    padding: 10px 20px;
+    background-color: #fff;
+    font-size: 1.2rem;
+}
+
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.breadcrumb-item {
+    color: #555;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.breadcrumb-item a {
+    text-decoration: none;
+    color: #d9534f;
+}
+
+.breadcrumb-item a:hover {
+    text-decoration: underline;
+    color: #c9302c;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    content: ">";
+    color: #999;
+    padding: 0 10px;
+}
+
+/* 푸터 스타일 */
+footer {
+    background-color:  rgb(255, 152, 0);
+    color: #000000;
+    padding: 10px 0;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1.5rem;
+}
+
+footer p {
+    margin: 0;
+    font-size: 1rem;
+}
+
+/* 컨텐츠 영역 */
+.content {
+    padding: 20px;
+    min-height: 300px;
+    font-size: 1.5rem;
+}
+
+/* 반응형 웹 추가 - 화면 크기별 설정 */
+/* 큰 화면 (데스크탑) */
+
+/* 큰 화면 (데스크탑) */
+@media (min-width: 1086px) {
+    .navbar-nav {
+        display: flex; /* 메뉴 항목들을 가로로 배치 */
+        flex-direction: row; /* 항목들을 가로로 정렬 */
+        justify-content: center; /* 중앙 정렬 */
+    }
+    .navbar-nav .nav-item {
+        margin-left: 20px;
+    }
+
+    .form-control {
+        width: 300px;
+    }
+}
+
+/* 중간 화면 (태블릿 및 작은 데스크탑) */
+@media (min-width: 768px) and (max-width: 1000px) {
+    .navbar-nav {
+        display: flex; /* 메뉴 항목들을 가로로 배치 */
+        flex-direction: row;  /* 메뉴 항목들을 가로로 배치 */
+        justify-content: center; /* 중앙 정렬 */
+    }
+
+    .navbar-nav .nav-item {
+        margin-left: 0;
+        margin-bottom: 12px;  /* 메뉴 항목 간의 간격 */
+        font-size: 1.15rem; /* 폰트 크기 줄이기 */
+    }
+
+    .form-control {
+        width: 80% !important;
+        margin-top: 10px;
+        font-size: 1rem; /* 폰트 크기 줄이기 */
+        padding: 8px 16px;  /* 기본 패딩 값 */
+    }
+}
+
+/* 작은 화면 (모바일) */
+@media (max-width: 768px) {
+    .form-control {
+        width: 100% !important;  /* 화면 가로 크기에 맞게 너비 조정 */
+        margin-top: 10px;
+        box-sizing: border-box;  /* 패딩과 테두리를 포함한 너비 */
+        height: 40px !important;  /* 검색창 높이를 40px로 설정 */
+        font-size: 1.1rem;  /* 폰트 크기 줄이기 */
+        padding: 6px 12px;  /* 작은 화면에서 패딩 줄이기 */
+    }
+
+    .btn-outline-success {
+        width: auto !important;  /* 버튼의 너비를 텍스트에 맞게 자동으로 설정 */
+        height: 40px !important;  /* 버튼 높이를 40px로 설정 */
+        font-size: 1.1rem;  /* 버튼 글자 크기 줄이기 */
+        padding: 6px 12px;  /* 버튼의 패딩을 줄이기 */
+        white-space: nowrap;  /* 글자가 한 줄로 표시되도록 설정 */
+        margin-top: 10px;  /* 버튼 위쪽에 여백을 추가하여 위치를 내림 */
+    }
+}
+
+/* 매우 작은 화면 (초기 모바일) */
+@media (max-width: 576px) {
+    .form-control {
+        width: 100% !important;  /* 화면 가로 크기에 맞게 너비 조정 */
+        margin-top: 10px;
+        box-sizing: border-box;  /* 패딩과 테두리를 포함한 너비 */
+        height: 35px !important;  /* 검색창 높이를 35px로 설정 */
+        font-size: 0.9rem;  /* 폰트 크기 줄이기 */
+        padding: 4px 8px;  /* 더 작은 화면에서 패딩을 더 줄이기 */
+    }
+
+    .btn-outline-success {
+        width: auto !important;  /* 버튼 너비를 텍스트에 맞게 자동으로 설정 */
+        height: 35px !important;  /* 버튼 높이를 35px로 설정 */
+        font-size: 0.9rem;  /* 버튼 글자 크기 줄이기 */
+        padding: 4px 8px;  /* 버튼의 패딩을 줄이기 */
+        white-space: nowrap;  /* 글자가 한 줄로 표시되도록 설정 */
+        margin-top: 10px;  /* 버튼 위쪽에 여백을 추가하여 위치를 내림 */
+    }
+}
+
+/* 화면이 350px 이하로 줄어들지 않도록 최소 너비 설정 */
+@media (max-width: 350px) {
+    body {
+        min-width: 350px;  /* 최소 너비 350px로 설정 */
+    }
+}

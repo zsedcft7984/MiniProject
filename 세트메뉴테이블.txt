@@ -1,0 +1,43 @@
+# class User(db.Model):
+#     # 테이블 이름 직접 지정 이 부분을 생략하면 기본적으로 클래스 이름을 소
+#     # 문자화 한 user가 만들어짐
+#     __tablename__ = 'users'
+
+#     id = db.Column(db.Integer, primary_key = True)
+#     username = db.Column(db.String, unique=True,)
+#     email = db.Column(db.String, unique=True, index=True)
+#     password_hash = db.Column(db.String)
+
+
+class Cart(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    items = db.relationship('CartItem', backref='cart', lazy=True)
+
+# Menu 테이블: 메뉴 아이템 (커스터마이징 옵션 포함)
+class Menu(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String, nullable=False)
+    description = db.Column(db.String, nullable=False)
+    category = db.Column(db.String, nullable=False)
+    # base_price = db.Column(db.Float, nullable=False)
+    customization_options = db.Column(db.Text, nullable=True)  # 커스터마이징 옵션 (JSON 형식)
+
+    def get_customizations(self):
+        if self.customization_options:
+            return json.loads(self.customization_options)
+        return []
+
+# Cart Items 테이블: 장바구니 아이템 (커스터마이징 옵션 포함)
+class CartItem(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    cart_id = db.Column(db.Integer, db.ForeignKey('cart.id'), nullable=False)
+    menu_item_id = db.Column(db.Integer, db.ForeignKey('menu.id'), nullable=False)
+    quantity = db.Column(db.Integer, nullable=False, default=1)
+    customizations = db.Column(db.Text, nullable=True)  # 커스터마이징 옵션 (JSON 형식)
+
+    menu_item = db.relationship('Menu', backref='cart_items', lazy=True)
+
+    def get_customizations(self):
+        if self.customizations:
+            return json.loads(self.customizations)
+        return []

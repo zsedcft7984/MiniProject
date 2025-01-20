@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}패스트푸드{% endblock %}</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('web.static', filename='style.css') }}">
+
+</head>
+<body>
+    <!-- 네비게이션 바 시작 -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <!-- 로고 이미지 -->
+            <a class="navbar-brand" href="{{ url_for('web.home') }}">
+                <img src="{{ url_for('web.static', filename='image/logo.png') }}" alt="로고" class="logo" height="40">
+            </a>
+            <!-- 토글 버튼(모바일에서 메뉴 표시) -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <!-- 네비게이션 링크들 -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{{ url_for('web.home') }}">홈</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('web.menu') }}">메뉴</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('web.events') }}">이벤트</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('web.order') }}">주문하기</a>
+                    </li>
+                </ul>
+                <!-- 검색 폼 -->
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">검색</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <!-- 네비게이션 바 끝 -->
+    <nav aria-label="breadcrumb" class="breadcrumb-nav">
+        <ol class="breadcrumb">
+            {% for item in breadcrumb %}
+                {% if item.url %}
+                    <li class="breadcrumb-item"><a href="{{ item.url }}">{{ item.name }}</a></li>
+                {% else %}
+                    <li class="breadcrumb-item active" aria-current="page">{{ item.name }}</li>
+                {% endif %}
+            {% endfor %}
+        </ol>
+    </nav>
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+
+    <footer class="text-center">
+        <p>&copy; 2025 FastFood. 모든 권리 보유.</p>
+    </footer>
+
+    <!-- Bootstrap JS, Popper.js 포함 -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
