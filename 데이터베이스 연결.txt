@@ -1,0 +1,19 @@
+<세팅>
+config.py 내용에 사용자에 맞게 변경해줌
+
+class LocalConfig(BaseConfig):
+    SQLALCHEMY_DATABASE_URI = f"mysql+pymysql://사용자이름:비밀번호@localhost:포트번호/스키마 이름"
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
+    WTF_CSRF_ENABLED = False
+
+config = {
+    "local" : LocalConfig
+}
+
+<터미널 입력>
+가상환경 연결 상태에서
+flask db init - migrate 폴더가 생김
+
+flask db migrate - mysql에 alembic_version 테이블이 생김(경로가 올바르다면)
+
+flask db upgrade - 사용자가 models.py에 정의한 테이블이 데이터베이스에 저장됨

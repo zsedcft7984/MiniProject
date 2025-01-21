@@ -1,17 +1,62 @@
 {% extends "web/base.html" %}
 
 {% block title %}메뉴 - FastFood{% endblock %}
+{% block styles %}
+    <link rel="stylesheet" href="{{ url_for('web.static', filename='menu.css') }}">
+{% endblock %}
 
 {% block content %}
-<section class="menu">
-    <h2>메뉴</h2>
-    <p>우리의 인기 메뉴를 살펴보세요!</p>
-    <!-- 메뉴 항목들을 여기에 추가 -->
-    <div class="menu-item">
-        <img src="{{ url_for('static', filename='images/burger.jpg') }}" alt="버거">
-        <h3>버거</h3>
-        <p>맛있는 햄버거와 함께 즐겨보세요!</p>
-        <span>₩5,000</span>
+<section class="menu-wrapper">
+    <div class="menu">
+        <!-- 버거 카테고리 -->
+        <div class="menu-category-wrapper">
+            <h3>버거</h3>
+            <hr id="title-separator">
+            <div class="menu-category">
+                {% for item in burgers %}
+                <div class="menu-item">
+                    <img src="{{ url_for('web.static', filename='images/burger/' + item.name + '.png') }}" alt="{{ item.name }}">
+                    <h4>{{ item.name }}</h4>
+                    <p>맛있는 {{ item.name }}을 즐겨보세요!</p>
+                    <span>₩{{ item.quantity }}</span>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <hr id="category-separator">
+        
+        <!-- 사이드 카테고리 -->
+        <div class="menu-category-wrapper">
+            <h3>사이드</h3>
+            <hr id="title-separator">
+            <div class="menu-category">
+                {% for item in sides %}
+                <div class="menu-item">
+                    <img src="{{ url_for('web.static', filename='images/side/' + item.name + '.png') }}" alt="{{ item.name }}">
+                    <h4>{{ item.name }}</h4>
+                    <p>맛있는 {{ item.name }}을 즐겨보세요!</p>
+                    <span>₩{{ item.quantity }}</span>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <hr id="category-separator">
+        
+        <!-- 음료 카테고리 -->
+        <div class="menu-category-wrapper">
+            <h3>음료</h3>
+            <hr id="title-separator">
+            <div class="menu-category">
+                {% for item in drinks %}
+                <div class="menu-item">
+                    <img src="{{ url_for('web.static', filename='images/drink/' + item.name + '.png') }}" alt="{{ item.name }}">
+                    <h4>{{ item.name }}</h4>
+                    <p>시원한 {{ item.name }} 한잔 어떠세요?</p>
+                    <span>₩{{ item.quantity }}</span>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
     </div>
 </section>
 {% endblock %}
