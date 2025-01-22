@@ -70,10 +70,13 @@ header {
     border-radius: 20px;
     font-size: 1.5rem;
 }
-
+.user-status {
+    margin-right: 10px; /* 왼쪽으로 10px 이동 */
+}
 .breadcrumb-container {
     display: flex;
     justify-content: space-between;
+    height: 3rem;
     align-items: center;
     margin-bottom: 20px; /* Optional margin for spacing */
     background-color: white;
@@ -175,7 +178,7 @@ footer p {
     }
 
     .form-control {
-        width: 300px;
+        width: 250px;
     }
 }
 
@@ -337,18 +340,4 @@ footer p {
     display: flex;
     align-items: center;
     justify-content: center;
-    animation: none; /* 기본적으로 애니메이션 없음 */
-}
-
-@keyframes shake {
-    0% { transform: translateX(0); }
-    25% { transform: translateX(-4px); }
-    50% { transform: translateX(4px); }
-    75% { transform: translateX(-4px); }
-    100% { transform: translateX(0); }
-}
-
-/* cart-count가 0이 아닌 경우 딸랑거리는 애니메이션 적용 */
-#cart-count.non-zero {
-    animation: shake 0.5s ease-in-out infinite;
 }

@@ -13,7 +13,9 @@
                 class="signup-form"
             >
                 {{ form.csrf_token }}
-
+                {% for message in get_flashed_messages() %}
+                <span class="dt-auth-flash">{{  message  }}</span>
+                {% endfor %}
                 <!-- 사용자명 입력 필드 -->
                 <div class="form-group">
                     <label for="username">{{ form.username.label }}</label>
@@ -44,6 +46,9 @@
                 <!-- 제출 버튼 -->
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary form-group">가입하기</button>
+                </div>
+                <div class="form-group">
+                    <button type="button" class="btn-primary form-group" onclick="window.location.href='/auth/login';">뒤로가기</button>
                 </div>
             </form>
         </div>

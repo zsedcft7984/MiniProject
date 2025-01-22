@@ -34,14 +34,15 @@ def signup():
         )
         # 이메일 주소 중복체크를 한다.
         if user.is_duplicate_email():
+            print("!")
             flash("지정 이메일 주소는 이미 등록되어 있습니다.")
             return redirect(url_for("auth.signup"))
         
         # 사용자 정보를 등록한다.
         db.session.add(user)
         db.session.commit()
-        # 회원 가입시 자동로그인
-        login_user(user)
+        
+        return render_template("auth/login.html", form=form)
 
     return render_template("auth/signup.html", form=form)
 

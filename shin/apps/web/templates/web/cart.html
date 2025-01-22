@@ -1,0 +1,24 @@
+{% extends "web/base.html" %}
+
+{% block title %}{{ current_user.username }}님의 장바구니{% endblock %}
+
+{% block content %}
+    <h2>장바구니</h2>
+    <div class="cart-items">
+        {% if cart_items %}
+            <ul>
+                {% for item in cart_items %}
+                    <li>
+                        <img src="{{ url_for('web.static', filename='images/') }}burger/{{ item.menu.name }}.png" alt="{{ item.menu.name }}">
+
+                        <span>{{ item.menu.name }} - {{ item.quantity }}개</span>
+                        <span>₩{{ item.menu.quantity * item.quantity }}</span>
+                    </li>
+                {% endfor %}
+            </ul>
+            <p>총 가격: ₩{{ total_price }}</p>
+        {% else %}
+            <p>장바구니에 담긴 아이템이 없습니다.</p>
+        {% endif %}
+    </div>
+{% endblock %}

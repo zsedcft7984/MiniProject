@@ -1,12 +1,24 @@
 {% extends "web/base.html" %}
 
-{% block title %}주문하기 - FastFood{% endblock %}
+{% block title %}주문 미리보기 - FastFood{% endblock %}
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('web.static', filename='preview.css') }}">
 
+{% endblock %}
 {% block content %}
-<section class="order">
-    <h2>주문하기</h2>
-    <p>원하는 메뉴를 선택하고 미리 확인해보세요!</p>
-    <!-- 주문 폼 또는 메뉴 추가 -->
-    <a href="/menu" class="cta-btn">메뉴 보기</a>
+<section class="preview">
+    <h2>주문 미리보기</h2>
+    <p>아래에서 주문한 상품을 확인하세요!</p>
+    <div class="preview-container">
+        <div class="preview-base">
+            <img src="{{ url_for('web.static', filename='images/base.png') }}" alt="주문 미리보기" class="base-image">
+            
+            <!-- 4개 영역 (버거, 사이드, 음료, 기타) -->
+            <div class="preview-area burger-area"></div>
+            <div class="preview-area side-area"></div>
+            <div class="preview-area drink-area"></div>
+            <div class="preview-area extra-area"></div>
+        </div>
+    </div>
 </section>
 {% endblock %}

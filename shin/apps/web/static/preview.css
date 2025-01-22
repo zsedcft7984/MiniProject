@@ -1,0 +1,55 @@
+.preview-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%; /* Ensure full height to center properly */
+}
+
+.preview-base {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.preview-area {
+    position: absolute;
+    border: 2px solid; /* Default border for all areas */
+}
+
+
+/* Burger Area */
+.burger-area {
+    top: 40%;
+    left: 10%; /* 10% from the left */
+    width: 45%;
+    height: 45%;
+    border-color: red; /* Red border for the burger area */
+}
+
+/* Extra Area */
+.extra-area {
+    top: 40%;
+    left: 55%; /* 50% from the left to align with the burger area */
+    width: 35%;
+    height: 45%;
+    border-color: purple; /* Purple border for the extra area */
+}
+
+/* Side Area */
+.side-area {
+    top: calc(40% - 25%); /* Positioned above the burger area */
+    left: 10%; /* Same width as the burger area */
+    width: 40%;
+    height: 25%;
+    border-color: green; /* Green border for the side area */
+}
+
+/* Drink Area */
+.drink-area {
+    top: calc(40% - 25%); /* Positioned above the extra area */
+    left: 50%; /* 50% from the left to align with the extra area */
+    width: 40%;
+    height: 25%;
+    border-color: blue; /* Blue border for the drink area */
+}

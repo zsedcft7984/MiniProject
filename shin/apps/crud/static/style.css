@@ -26,7 +26,14 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin-top: 50px;
 }
-
+/* 플래시 메시지 스타일 */
+.dt-auth-flash {
+    color: #d9534f;
+    font-weight: bold;
+    text-align: center;
+    display: block;
+    margin-bottom: 10px;
+}
 /* 제목 */
 .form-title {
     font-size: 2rem;
