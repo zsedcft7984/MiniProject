@@ -2,14 +2,86 @@
 
 {% block title %}이벤트 - FastFood{% endblock %}
 
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('web.static', filename='event.css') }}">
+{% endblock %}
+
 {% block content %}
 <section class="events">
-    <h2>이벤트</h2>
-    <p>지금 진행 중인 특별한 이벤트를 확인하세요!</p>
-    <!-- 이벤트 내용 -->
-    <div class="event-item">
-        <h3>할인 행사</h3>
-        <p>이번 주 한정! 20% 할인</p>
+
+    <!-- 카테고리 필터 -->
+    <div class="event-category">
+        <button class="btn-filter" data-filter="ongoing">진행 중</button>
+        <button class="btn-filter" data-filter="ended">종료된 이벤트</button>
+    </div>
+
+    <!-- 이벤트 목록 -->
+    <div class="eventlist">
+        <!-- 진행 중 이벤트 -->
+        <div class="event-item ongoing">
+            <div class="event-image">
+                <img src="{{ url_for('web.static', filename='images/event1.jpg') }}" alt="할인 행사">
+            </div>
+            <h3>할인 행사</h3>
+            <p>이번 주 한정! 20% 할인</p>
+        </div>
+        <div class="event-item ongoing">
+            <div class="event-image">
+                <img src="{{ url_for('web.static', filename='images/event2.jpg') }}" alt="무료 음료 증정">
+            </div>
+            <h3>무료 음료 증정</h3>
+            <p>모든 버거 구매 시 무료 음료 증정</p>
+        </div>
+        
+        <!-- 종료된 이벤트 -->
+        <div class="event-item ended">
+            <div class="overlay"></div>
+            <div class="event-image">
+                <img src="{{ url_for('web.static', filename='images/event3.jpg') }}" alt="여름 한정 할인">
+            </div>
+            <h3>여름 한정 할인</h3>
+            <p>여름 시즌 할인 이벤트 종료</p>
+        </div>
+        <div class="event-item ended">
+            <div class="overlay"></div>
+            <div class="event-image">
+                <img src="{{ url_for('web.static', filename='images/event4.jpg') }}" alt="추석 맞이 할인">
+            </div>
+            <h3>추석 맞이 할인</h3>
+            <p>추석 연휴 특별 할인 종료</p>
+        </div>
     </div>
 </section>
+{% block script %}
+<script>
+    document.querySelectorAll('.btn-filter').forEach(button => {
+    button.addEventListener('click', function() {
+        // 모든 버튼에서 'active' 클래스 제거
+        document.querySelectorAll('.btn-filter').forEach(btn => btn.classList.remove('active'));
+        
+        // 클릭한 버튼에 'active' 클래스 추가
+        this.classList.add('active');
+        
+        const filter = this.getAttribute('data-filter');
+        const eventItems = document.querySelectorAll('.event-item');
+
+        eventItems.forEach(item => {
+            if (filter === 'ongoing') {
+                if (item.classList.contains('ongoing')) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            } else if (filter === 'ended') {
+                if (item.classList.contains('ended')) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            }
+        });
+    });
+});
+</script>
+{% endblock %}
 {% endblock %}

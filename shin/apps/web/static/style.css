@@ -71,16 +71,24 @@ header {
     font-size: 1.5rem;
 }
 
+.breadcrumb-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px; /* Optional margin for spacing */
+    background-color: white;
+}
 .btn-outline-success {
+    background-color: green;
     border-radius: 20px;
     font-size: 1.5rem;
+    color: white;
 }
 
 
 /* 브레드크럼 스타일 */
 .breadcrumb-nav {
     padding: 10px 20px;
-    background-color: #fff;
     font-size: 1.2rem;
 }
 
@@ -113,6 +121,22 @@ header {
     color: #999;
     padding: 0 10px;
 }
+
+.btn-link {
+    color: #888; /* 회색 색상 */
+    text-decoration: none; /* 밑줄 표시 */
+}
+
+.btn-link:hover {
+    color: #555; /* 호버 시 더 어두운 회색 */
+    text-decoration: none; /* 밑줄 유지 */
+}
+.dt-auth-signup {
+    margin-top: 5px;
+    font-size: 1.2rem;
+    text-align: right; /* 텍스트 및 링크를 오른쪽 정렬 */
+}
+
 
 /* 푸터 스타일 */
 footer {
@@ -156,7 +180,7 @@ footer p {
 }
 
 /* 중간 화면 (태블릿 및 작은 데스크탑) */
-@media (min-width: 768px) and (max-width: 1000px) {
+@media (min-width: 768px) and (max-width: 1005px) {
     .navbar-nav {
         display: flex; /* 메뉴 항목들을 가로로 배치 */
         flex-direction: row;  /* 메뉴 항목들을 가로로 배치 */
@@ -165,15 +189,22 @@ footer p {
 
     .navbar-nav .nav-item {
         margin-left: 0;
-        margin-bottom: 12px;  /* 메뉴 항목 간의 간격 */
-        font-size: 1.15rem; /* 폰트 크기 줄이기 */
+        margin-bottom: 10px;  /* 메뉴 항목 간의 간격 */
+        font-size: 1.1rem; /* 폰트 크기 줄이기 */
     }
 
     .form-control {
-        width: 80% !important;
+        width: 70% !important;
         margin-top: 10px;
         font-size: 1rem; /* 폰트 크기 줄이기 */
-        padding: 8px 16px;  /* 기본 패딩 값 */
+        padding: 8px 8px;  /* 기본 패딩 값 */
+    }
+    .btn-outline-success {
+        height: 42px !important;
+        margin-top: 10px;
+        font-size: 1.1rem;
+
+
     }
 }
 
@@ -224,4 +255,100 @@ footer p {
     body {
         min-width: 350px;  /* 최소 너비 350px로 설정 */
     }
+}
+
+
+/* 로그인 카드 중앙 정렬 및 크기 조정 */
+.dt-auth-login {
+    max-width: 500px; /* 가로 크기 */
+    margin: 100px auto; /* 중앙 정렬 (위/아래 여백 조정) */
+    padding: 40px; 
+    background-color: #ffffff; /* 흰색 배경 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+    border-radius: 10px; /* 모서리 둥글게 */
+}
+
+/* 로그인 헤더 스타일 */
+.dt-auth-login header {
+    text-align: center;
+    font-size: 2rem;
+    color: #d9534f; /* 제목 색상 */
+    margin-bottom: 20px;
+}
+
+/* 입력 필드 스타일 */
+.dt-auth-input {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 10px; /* 필드 간격 조정 */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1.2rem;
+}
+
+.dt-auth-btn {
+    width: 100%; /* 버튼 크기를 조정 */
+    padding: 12px; /* 버튼의 패딩을 줄여서 크기 감소 */
+    font-size: 1.2rem;
+    background-color: green; /* 버튼 색상 */
+    color: #fff;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    margin: 0 auto; /* 버튼을 가로로 중앙 정렬 */
+    display: block; /* 블록 요소로 설정하여 중앙 정렬 */
+}
+.btn-sm{
+    background-color: green;
+}
+/* 버튼 호버 효과 */
+.dt-auth-btn:hover {
+    background-color: #e68900;
+}
+
+/* 플래시 메시지 스타일 */
+.dt-auth-flash {
+    color: #d9534f;
+    font-weight: bold;
+    text-align: center;
+    display: block;
+    margin-bottom: 10px;
+}
+
+#cart {
+    position: relative;
+    font-size: 24px;
+    margin-right: 10px; /* 카트 이미지와 텍스트 사이에 10px 간격 추가 */
+}
+#cart {
+    margin-right: 10px; /* 카트 이미지와 텍스트 사이에 10px 간격 추가 */
+}
+#cart-count {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 4px 6px;
+    font-size: 11px;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: none; /* 기본적으로 애니메이션 없음 */
+}
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-4px); }
+    50% { transform: translateX(4px); }
+    75% { transform: translateX(-4px); }
+    100% { transform: translateX(0); }
+}
+
+/* cart-count가 0이 아닌 경우 딸랑거리는 애니메이션 적용 */
+#cart-count.non-zero {
+    animation: shake 0.5s ease-in-out infinite;
 }

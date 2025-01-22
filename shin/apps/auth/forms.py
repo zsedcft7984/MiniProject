@@ -38,4 +38,4 @@ class LoginForm(FlaskForm):
     )
     password =PasswordField("비밀번호",
                             validators=[DataRequired("비밀번호는 필수입니다.")])
-    submit = SubmitField("로그인")
+    submit = SubmitField("Login")

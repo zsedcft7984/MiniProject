@@ -2,11 +2,81 @@
 
 {% block title %}주문하기 - FastFood{% endblock %}
 
+{% block styles %}
+    <link rel="stylesheet" href="{{ url_for('web.static', filename='menu.css') }}">
+{% endblock %}
+
 {% block content %}
-<section class="order">
-    <h2>주문하기</h2>
-    <p>원하는 메뉴를 선택하고 빠르게 주문하세요!</p>
-    <!-- 주문 폼 또는 메뉴 추가 -->
-    <a href="/menu" class="cta-btn">메뉴 보기</a>
+<section class="menu-wrapper">
+    <div class="menu">
+        <!-- 버거 카테고리 -->
+        <div class="menu-category-wrapper">
+            <h3>버거</h3>
+            <hr id="title-separator">
+            <div class="menu-category">
+                {% for item in burgers %}
+                <div class="menu-item">
+                    <img src="{{ url_for('web.static', filename='images/burger/' + item.name + '.png') }}" alt="{{ item.name }}">
+                    <h4>{{ item.name }}</h4>
+                    <p>맛있는 {{ item.name }}을 즐겨보세요!</p>
+                    <span>₩{{ item.quantity }}</span>
+                    
+                    <!-- 단품과 세트 버튼 추가 -->
+                    <div class="menu-buttons">
+                        <button class="btn-item add-to-cart" data-name="{{ item.name }}" data-price="{{ item.quantity }}" data-type="단품">단품</button>
+                        <button class="btn-set add-to-cart" data-name="{{ item.name }}" data-price="{{ item.quantity }}" data-type="세트">세트</button>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <hr id="category-separator">
+        
+        <!-- 사이드 카테고리 -->
+        <div class="menu-category-wrapper">
+            <h3>사이드</h3>
+            <hr id="title-separator">
+            <div class="menu-category">
+                {% for item in sides %}
+                <div class="menu-item">
+                    <img src="{{ url_for('web.static', filename='images/side/' + item.name + '.png') }}" alt="{{ item.name }}">
+                    <h4>{{ item.name }}</h4>
+                    <p>맛있는 {{ item.name }}을 즐겨보세요!</p>
+                    <span>₩{{ item.quantity }}</span>
+                    
+                    <!-- 주문하기 버튼 추가 -->
+                    <div class="menu-buttons">
+                        <button class="btn-order add-to-cart" data-name="{{ item.name }}" data-price="{{ item.quantity }}">주문하기</button>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <hr id="category-separator">
+        
+        <!-- 음료 카테고리 -->
+        <div class="menu-category-wrapper">
+            <h3>음료</h3>
+            <hr id="title-separator">
+            <div class="menu-category">
+                {% for item in drinks %}
+                <div class="menu-item">
+                    <img src="{{ url_for('web.static', filename='images/drink/' + item.name + '.png') }}" alt="{{ item.name }}">
+                    <h4>{{ item.name }}</h4>
+                    <p>시원한 {{ item.name }} 한잔 어떠세요?</p>
+                    <span>₩{{ item.quantity }}</span>
+                    
+                    <!-- 주문하기 버튼 추가 -->
+                    <div class="menu-buttons">
+                        <button class="btn-order add-to-cart" data-name="{{ item.name }}" data-price="{{ item.quantity }}">주문하기</button>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 </section>
+{% endblock %}
+{% block script %}
+
 {% endblock %}
