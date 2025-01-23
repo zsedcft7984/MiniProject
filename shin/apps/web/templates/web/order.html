@@ -19,7 +19,7 @@
                     <img src="{{ url_for('web.static', filename='images/burger/' + item.name + '.png') }}" alt="{{ item.name }}">
                     <h4>{{ item.name }}</h4>
                     <p>맛있는 {{ item.name }}을 즐겨보세요!</p>
-                    <span>₩ {{ item.quantity }}</span>
+                    <span class="item-quantity" data-quantity="{{ item.quantity }}">₩ {{ item.quantity }}</span>
                     
                     <!-- 단품과 세트 버튼 추가 -->
                     <div class="menu-buttons">
@@ -42,7 +42,7 @@
                     <img src="{{ url_for('web.static', filename='images/side/' + item.name + '.png') }}" alt="{{ item.name }}">
                     <h4>{{ item.name }}</h4>
                     <p>맛있는 {{ item.name }}을 즐겨보세요!</p>
-                    <span>₩ {{ item.quantity }}</span>
+                    <span class="item-quantity" data-quantity="{{ item.quantity }}">₩ {{ item.quantity }}</span>
                     
                     <!-- 주문하기 버튼 추가 -->
                     <div class="menu-buttons">
@@ -64,7 +64,7 @@
                     <img src="{{ url_for('web.static', filename='images/drink/' + item.name + '.png') }}" alt="{{ item.name }}">
                     <h4>{{ item.name }}</h4>
                     <p>시원한 {{ item.name }} 한잔 어떠세요?</p>
-                    <span>₩ {{ item.quantity }}</span>
+                    <span class="item-quantity" data-quantity="{{ item.quantity }}">₩ {{ item.quantity }}</span>
                     
                     <!-- 주문하기 버튼 추가 -->
                     <div class="menu-buttons">

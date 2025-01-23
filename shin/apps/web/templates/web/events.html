@@ -17,17 +17,23 @@
 
     <!-- 이벤트 목록 -->
     <div class="eventlist">
+        
         <!-- 진행 중 이벤트 -->
         <div class="event-item ongoing">
             <div class="event-image">
-                <img src="{{ url_for('web.static', filename='images/event1.jpg') }}" alt="할인 행사">
+                <a href="{{ url_for('web.order') }}">
+                    <img src="{{ url_for('web.static', filename='images/event1.jpg') }}" alt="할인 행사" style="margin-top: 25%;">
+                </a>
             </div>
             <h3>할인 행사</h3>
             <p>이번 주 한정! 20% 할인</p>
         </div>
+
         <div class="event-item ongoing">
             <div class="event-image">
-                <img src="{{ url_for('web.static', filename='images/event2.jpg') }}" alt="무료 음료 증정">
+                <a href="{{ url_for('web.order') }}">
+                    <img src="{{ url_for('web.static', filename='images/event2.jpg') }}" alt="무료 음료 증정">
+                </a>
             </div>
             <h3>무료 음료 증정</h3>
             <p>모든 버거 구매 시 무료 음료 증정</p>
@@ -54,7 +60,7 @@
 </section>
 {% block script %}
 <script>
-    document.querySelectorAll('.btn-filter').forEach(button => {
+document.querySelectorAll('.btn-filter').forEach(button => {
     button.addEventListener('click', function() {
         // 모든 버튼에서 'active' 클래스 제거
         document.querySelectorAll('.btn-filter').forEach(btn => btn.classList.remove('active'));
@@ -69,12 +75,14 @@
             if (filter === 'ongoing') {
                 if (item.classList.contains('ongoing')) {
                     item.style.display = 'block';
+                    item.querySelector('.event-image').style.transform = 'translateX(+75px)'; // 좌측으로 50px 이동
                 } else {
                     item.style.display = 'none';
                 }
             } else if (filter === 'ended') {
                 if (item.classList.contains('ended')) {
                     item.style.display = 'block';
+                    item.querySelector('.event-image').style.transform = 'translateX(+75px)'; // 좌측으로 50px 이동
                 } else {
                     item.style.display = 'none';
                 }
@@ -82,6 +90,7 @@
         });
     });
 });
+
 </script>
 {% endblock %}
 {% endblock %}

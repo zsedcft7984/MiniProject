@@ -1,0 +1,34 @@
+{% extends "web/base.html" %}
+
+{% block title %}검색 결과 - FastFood{% endblock %}
+{% block styles %}
+    <link rel="stylesheet" href="{{ url_for('web.static', filename='menu.css') }}">
+{% endblock %}
+
+{% block content %}
+<section class="menu-wrapper">
+    <div class="menu">
+        <h2 style="    text-align: center;">검색 결과</h2>
+        <hr id="title-separator">
+
+        {% if results %}
+            <div class="menu-category">
+                {% for item in results %}
+                <div class="menu-item">
+                    <img src="{{ url_for('web.static', filename='images/burger/' + item.name + '.png') }}" alt="{{ item.name }}">
+                    <h4>{{ item.name }}</h4>
+                    <p>{{ item.description }}</p>
+                    <span class="item-quantity" data-quantity="{{ item.quantity }}">₩ {{ item.quantity }}</span>
+                </div>
+                {% endfor %}
+            </div>
+            <br>
+            <a href="{{ url_for('web.order') }}">
+                <button class="btn-order add-to-cart" style="border-radius: 15px; width: 50%; margin-left: 25%;">주문 하기</button>
+            </a>
+        {% else %}
+            <p class="no-results">검색 결과가 없습니다.</p>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,144 @@
+/* 홈 페이지 기본 스타일 */
+.hero {
+    background: url('../images/hero-background.jpg') center/cover no-repeat;
+    text-align: center;
+    padding: 120px 20px;
+    color: #fff;
+    position: relative;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.hero-text {
+    position: relative;
+    z-index: 1;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.hero p {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+}
+
+.cta-btn {
+    display: inline-block;
+    background-color: #ff9800;
+    color: #fff;
+    padding: 15px 30px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border-radius: 30px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.cta-btn:hover {
+    background-color: #e68900;
+}
+
+/* 캐러셀 (이미지 슬라이드) 스타일 */
+.carousel-inner {
+    width: 50% !important; /* 화면 가로의 70% 크기 */
+    margin: 0 auto; /* 중앙 정렬 */
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    background-color: transparent; /* 빈 영역은 투명하게 처리 */
+}
+
+.carousel-inner img {
+    width: 90%; /* 슬라이드 칸에 맞게 이미지 너비를 100%로 설정 */
+    height: 90%; /* 슬라이드 칸에 맞게 이미지 높이를 100%로 설정 */
+    object-fit: contain; /* 이미지를 슬라이드 칸에 맞추되 잘리지 않도록 비율 유지 */
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: invert(100%);
+    width: 50px;
+    height: 50px;
+}
+
+/* 인디케이터 스타일 */
+.carousel-indicators button {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: #ff9800;
+}
+
+.carousel-indicators .active {
+    background-color: #e68900;
+}
+
+/* 반응형 스타일 */
+@media (max-width: 992px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero p {
+        font-size: 1.5rem;
+    }
+
+    .cta-btn {
+        font-size: 1.3rem;
+        padding: 12px 25px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding: 80px 20px;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 1.2rem;
+    }
+
+    .cta-btn {
+        font-size: 1.1rem;
+        padding: 10px 20px;
+    }
+
+    .carousel-inner img {
+        max-height: 400px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .cta-btn {
+        font-size: 1rem;
+        padding: 8px 18px;
+    }
+
+    .carousel-inner img {
+        max-height: 300px;
+    }
+}

@@ -28,7 +28,8 @@ class CartItem(db.Model):
     cart_id = db.Column(db.Integer, db.ForeignKey('cart.id'), nullable=False)
     menu_name = db.Column(db.String(100), db.ForeignKey('menu.name'), nullable=False)  # Menu의 name과 연결
     quantity = db.Column(db.Integer, nullable=False, default=1)  # CartItem에 있는 메뉴의 수량
-    
+    is_set = db.Column(db.Boolean, nullable=False, default=False)  # 세트 여부 칼럼 추가
+
     # Cart와의 관계 설정
     cart = db.relationship('Cart', back_populates='items')
     

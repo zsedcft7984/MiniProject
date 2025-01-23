@@ -1,24 +1,45 @@
 {% extends "web/base.html" %}
 
 {% block title %}{{ current_user.username }}님의 장바구니{% endblock %}
-
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('web.static', filename='cart.css') }}">
+{% endblock %}
 {% block content %}
+<div id="title">
     <h2>장바구니</h2>
+</div>
     <div class="cart-items">
         {% if cart_items %}
-            <ul>
-                {% for item in cart_items %}
-                    <li>
-                        <img src="{{ url_for('web.static', filename='images/') }}burger/{{ item.menu.name }}.png" alt="{{ item.menu.name }}">
-
-                        <span>{{ item.menu.name }} - {{ item.quantity }}개</span>
-                        <span>₩{{ item.menu.quantity * item.quantity }}</span>
-                    </li>
-                {% endfor %}
-            </ul>
-            <p>총 가격: ₩{{ total_price }}</p>
+            {% for item in cart_items %}
+                <div class="cart-item" id="cart-item-{{ item.id }}">
+                    <img 
+                        src="{{ url_for('web.static', filename='images/') }}{{ item.menu.category }}/{{ item.menu.name }}.png" 
+                        alt="{{ item.menu.name }}">
+        
+                        <div class="item-details">
+                            <span class="item-name">
+                                {{ item.menu.name }} 
+                                {% if item.is_set %}
+                                    (세트) 
+                                {% endif %}
+                                - <span id="item-quantity-{{ item.id }}">{{ item.quantity }}</span>개
+                            </span>
+                            <span class="item-price">
+                                ₩ {{ item.menu.quantity * item.quantity + (3500 * item.quantity if item.is_set else 0) }}
+                            </span>
+                        </div>
+                    <!-- 삭제 버튼 -->
+                    <button class="remove-item" data-item-id="{{ item.id }}">삭제</button>
+                </div>
+            {% endfor %}
+            <p class="total-price">총 가격: ₩{{ total_price }}</p>
+            <button class="checkout-btn">결제 하기</button>
         {% else %}
             <p>장바구니에 담긴 아이템이 없습니다.</p>
         {% endif %}
     </div>
+{% endblock %}
+
+{% block script %}
+<script src="{{ url_for('web.static', filename='cart.js') }}"></script>
 {% endblock %}
