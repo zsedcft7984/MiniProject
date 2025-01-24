@@ -1,0 +1,79 @@
+{% extends "web/base.html" %}
+
+{% block title %}결제 완료{% endblock %}
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('web.static', filename='preview.css') }}">
+<style>
+    /* 결제 완료 페이지 전용 스타일 */
+.payment-container {
+    text-align: center;
+    margin: 100px auto;
+    padding: 40px 20px;
+    max-width: 600px;
+    background-color: #fff8e1;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* 제목 스타일 */
+.payment-container h1 {
+    font-size: 2.5rem;
+    color: #ff9800;
+    margin-bottom: 20px;
+}
+
+/* 본문 텍스트 스타일 */
+.payment-container p {
+    font-size: 1.3rem;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+/* 홈으로 돌아가기 버튼 스타일 */
+.payment-container .home-button {
+    display: inline-block;
+    padding: 12px 30px;
+    font-size: 1.2rem;
+    color: white;
+    background-color: #ff9800;
+    border: none;
+    border-radius: 30px;
+    text-decoration: none;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.payment-container .home-button:hover {
+    background-color: #e68900;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .payment-container {
+        width: 90%;
+        padding: 30px 15px;
+    }
+
+    .payment-container h1 {
+        font-size: 2rem;
+    }
+
+    .payment-container p {
+        font-size: 1.1rem;
+    }
+
+    .payment-container .home-button {
+        font-size: 1rem;
+        padding: 10px 25px;
+    }
+}
+</style>
+{% endblock %}
+{% block content %}
+
+<div class="payment-container">
+    <h1>결제가 완료되었습니다!</h1>
+    <p>이용해 주셔서 감사합니다.</p>
+    <a href="/" class="home-button">홈으로 돌아가기</a>
+</div>
+
+{% endblock %}

@@ -42,4 +42,9 @@
 
 {% block script %}
 <script src="{{ url_for('web.static', filename='cart.js') }}"></script>
+<script>
+    document.querySelector('.checkout-btn').addEventListener('click', function() {
+        window.location.href = "/web/end";
+    });
+</script>
 {% endblock %}

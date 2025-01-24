@@ -167,3 +167,8 @@ def search():
     else:
         results = []
     return render_template('web/search_results.html', results=results)
+
+
+@web.route('/end')
+def end():
+    return render_template('web/end.html')
